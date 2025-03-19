@@ -2,7 +2,7 @@
 
 namespace cjrasmussen\FileSystem;
 
-use cjrasmussen\String\Strings;
+use cjrasmussen\String\Check;
 use Exception;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
@@ -36,7 +36,7 @@ class FileSystem
 				continue;
 			}
 
-			if (($search === null) || (Strings::strContains($filename, $search))) {
+			if (($search === null) || (Check::strContains($filename, $search))) {
 				$files[] = $filename;
 			}
 		}
