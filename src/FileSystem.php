@@ -24,14 +24,14 @@ class FileSystem
 		try {
 			$recursiveDirectoryIterator = new RecursiveDirectoryIterator($path);
 			$recursiveIteratorIterator = new RecursiveIteratorIterator($recursiveDirectoryIterator, RecursiveIteratorIterator::LEAVES_ONLY, RecursiveIteratorIterator::CATCH_GET_CHILD);
-		} catch (Exception $e) {
+		} catch (Exception) {
 			return [];
 		}
 
 		foreach ($recursiveIteratorIterator AS $file) {
 			$filename = $file->getPath() . '/' . $file->getFilename();
 
-			if ((substr($filename, -1) === '.') || (substr($filename, -1) === '/')) {
+			if ((str_ends_with($filename, '.')) || (str_ends_with($filename, '/'))) {
 				// SKIP IF THE FILE ENDS IN A DOT OR A SLASH
 				continue;
 			}
